@@ -162,3 +162,4 @@ ADMINISTRACIÓN DE TABLAS Y BASES DE DATOS
 
 
 FUENTE: http://www.xtec.cat/~acastan/textos/Administracion%20de%20MySQL.html
+http://superalumnos.net/files/EjerciciosSQL.pdf
