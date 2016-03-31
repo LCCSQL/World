@@ -1,0 +1,82 @@
+Comandos Basicos para Bases de Datos MySql:
+
+show databases; – Listar todas las bases de datos.
+use [database]; - Carga la BD a utilizar.
+show tables; – Listar todas las tablas de una base de datos.
+describe [table]; – Muestra la estructura de una tabla de la base de datos.
+drop table [table]; – Elimina la tabla, incluyendo registros y estructura.
+drop table if exists [table]; – Elimina la tabla de la base de datos, pero antes verifica que exista.
+truncate table [table]; – Elimina los registros, pero mantiene la esrtuctura de la tabla.
+rename table [table] to [nuevo nombre de tabla]; – Renombra una tabla de la base de datos.
+
+Bases de datos Mysql en consola:
+$ mysql -u root -p - Acceso al gestor de base de datos. 
+$ mysqldump –opt -u -h -p > /path/to/file – Exportar base de datos a un archivo.
+$ mysqldump –opt -u -h –all-databases -p > /path/to/file – Exportar TODAS las bases de datos a un archivo.
+
+Algunos comandos utiles de cunsultas Mysql en la base de datos world:
+
+* Listados:
+     SELECT columnas FROM tabla [WHERE condición]
+       [GROUP BY columna [ HAVING condición ]]
+       [ORDER BY columna [ ASC | DESC ]]
+       [LIMIT [inicio,] num_registros]
+     (Se puede usar el comodín * para seleccionar todas las columnas)
+
+   Ejemplos:
+     SELECT * FROM City;
+     SELECT Name, Population FROM City
+       WHERE CountryCode='ESP' AND Population > 500000 LIMIT 0,10;
+     SELECT CountryCode, SUM(Population) FROM City
+       GROUP BY CountryCode HAVING SUM(Population) > 10000000;
+     SELECT City.Name, Country.Name FROM City, Country
+       WHERE City.CountryCode=Country.Code ORDER BY Country.Name;
+
+ * Borrado:
+     DELETE FROM tabla WHERE condición;
+
+   Ejemplos:
+     DELETE FROM City WHERE Name='Marbella';
+     DELETE FROM City WHERE CountryCode='ESP' AND Population>500000;
+
+ * Inserción: 
+     INSERT INTO tabla (columna1, columna2, ...) VALUES (valor1, valor2, ...);
+
+   Ejemplos:
+     INSERT INTO City (Name, CountryCode, District, Population)
+       VALUES ('JoanBrossa','ESP', 'Katalonia', 3500000);
+     INSERT INTO City SET Name='JoanBrossa', CountryCode='ESP',
+       District='Katalonia', Population=3500000;
+
+ * Modificación:
+     UPDATE tabla SET columna1=valor1, columna2=valor2, ... [WHERE condición];
+
+   Ejemplos:
+     UPDATE City SET Population=5000000 WHERE Name='JoanBrossa';
+     UPDATE City SET Population=5000000 WHERE Population>1000000;
+
+ * clausula FROM:
+     Especifica la tabla de la cual se seleccionan los registros
+
+ * clausula WHERE:
+     Detalla las condiciones que han de reunir los registros resultantes
+
+ * clausula GROUP BY:
+     Separa los registros seleccionados en grupos específicos
+
+ * clausula HAVING:
+     Expresa la condición que debe cumplir cada grupo
+
+ * clausula ORDER BY:
+     Ordena los registros seleccionados de acuerdo a una ordenación específica
+
+ * clausula LIMIT:
+     Restringe el número de resultados devueltos.
+
+ * Lecturas para profundizar:
+   - http://dev.mysql.com/doc/refman/5.0/es/data-manipulation.html
+   - http://dev.mysql.com/doc/refman/5.0/es/examples.html
+   - http://dev.mysql.com/doc/refman/5.0/es/query-speed.html
+
+Ej. SELECT Name, Population FROM City ORDER BY Population DESC LIMIT 5;  //http://download.nust.na/pub6/mysql/doc/refman/5.0/es/multi-load-data-queries.html
+
