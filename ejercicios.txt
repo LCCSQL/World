@@ -1,0 +1,7 @@
+Realizar las consultas en SQL sobre la base de datos world y obtener los siguiente:
+1. Listado de todos los nombres de los países del mundo.
+2. nombre y población de todos los países del mundo.
+3. nombre y población de los paises de North America.
+4. Listado de las ciudades de méxico con población por encima del millon de habitantes.
+5. Listar los nombres de las 3 ciudades con el mayor número de habitantes de México.
+6. Espectativa promedio de vida (años) a nivel mundial.
