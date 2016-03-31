@@ -80,3 +80,85 @@ Algunos comandos utiles de cunsultas Mysql en la base de datos world:
 
 Ej. SELECT Name, Population FROM City ORDER BY Population DESC LIMIT 5;  //http://download.nust.na/pub6/mysql/doc/refman/5.0/es/multi-load-data-queries.html
 
+
+ADMINISTRACIÓN DE TABLAS Y BASES DE DATOS
+
+ * Crear una nueva base de datos:
+     CREATE DATABASE nueva_base_datos;
+
+ * Borrar toda una base de datos:
+     DROP DATABASE base_datos;
+
+ * Ver las bases de datos del sistema:
+     SHOW DATABASES;
+
+ * Seleccionar una base de datos para trabajar con ella:
+     USE base_datos;
+
+ * Crear una nueva tabla:
+     CREATE TABLE tabla definición;
+
+   Sintaxis completa en http://dev.mysql.com/doc/refman/5.0/es/create-table.html
+
+ * Borrar toda una tabla:
+     DROP TABLE tabla;
+
+ * Cambiar la definición de una tabla:
+     ALTER TABLE tabla modificación;
+
+   Sintaxis completa en http://dev.mysql.com/doc/refman/5.0/es/alter-table.html
+
+ * Ver las tablas de una base de datos:
+     SHOW TABLES;
+
+ * Ver la descripción de los campos de una tabla:
+     DESCRIBE tabla;
+
+ * Bloquea una tabla y sólo deja leer a quien la bloqueo y al resto de usuarios:
+     LOCK TABLES tabla READ;
+
+ * Bloquea una tabla y sólo deja leer y escribir a quien la bloqueo:
+     LOCK TABLES tabla WRITE;
+
+ * Desbloquea las tablas:
+     UNLOCK TABLES;
+
+ * Ejecuta un fichero de sentencias SQL:
+     SOURCE fichero_SQL;
+
+ * Marca el inicio y fin de una transacción, y hace los cambios permanentes:
+     BEGIN [nombre];
+     ...
+     COMMIT [nombre];
+
+ * Marca el inicio y fin de una transacción, pero al final deshace los cambios:
+     BEGIN [nombre];
+     ...
+     ROLLBACK [nombre];
+
+ * Muestra variables del servidor:
+     SHOW VARIABLES;
+
+ * Ejemplo:
+     CREATE DATABASE escuela;
+     SHOW DATABASES;
+     USE escuela;
+     CREATE TABLE alumnos (
+       DNI int(8) NOT NULL,
+       Nombre char(35) default '',
+       Nota int(2),
+       PRIMARY KEY (DNI));
+     DESCRIBE alumnos;
+     ALTER TABLE alumnos MODIFY Nota float(3,1);
+     DESCRIBE alumnos;
+     SHOW TABLES;
+     DROP TABLE alumnos;
+     DROP DATABASE escuela;
+
+ * Lecturas para profundizar:
+   - http://dev.mysql.com/doc/refman/5.0/es/data-definition.html
+   - http://dev.mysql.com/doc/refman/5.0/es/transactional-commands.html
+
+
+
+
